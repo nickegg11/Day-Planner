@@ -21,9 +21,11 @@ body {
   }
   
   .row {
-    border-top: 1px solid white;
+    padding: 1px;
     display: flex;
     display: -ms-flexbox;
+    border: 2px solid black;
+    border-radius: 1rem;
   }
   
   .hour {

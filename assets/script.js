@@ -1,9 +1,36 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var rows = document.getElementsByClassName("row");
+var currentHour = parseInt(dayjs().format('H'));
 var today = dayjs().format('MMM D, YYYY');
 $('#currentDay').text(today);
 
+
+Array.from(rows).forEach(row => {
+    var
+      rowIdString = row.id,
+      rowHour;
+    if (rowIdString) {
+      rowHour = parseInt(rowIdString);
+    }
+    if (rowHour) {
+      // Compares row id to current hour and sets color accordingly
+      if (currentHour === rowHour) {
+        setColor(row, "green");
+      } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
+        setColor(row, "red");
+      } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
+        setColor(row, "lightblue");
+      } else {
+        setColor(row, "white");
+      }
+    }
+  });
+  
+  function setColor(element, color) {
+    element.style.backgroundColor = color;
+  }
 $(function () {
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
