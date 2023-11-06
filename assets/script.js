@@ -23,7 +23,7 @@ Array.from(rows).forEach(row => {
       } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
         setColor(row, "lightblue");
       } else {
-        setColor(row, "white");
+        setColor(row, "lightblue");
       }
     }
   });
